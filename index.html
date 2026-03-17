@@ -281,12 +281,15 @@
         }
         
         .news-item {
+            display: block;
             padding: 14px;
             background: var(--bg);
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.2s;
             border: 1px solid transparent;
+            text-decoration: none;
+            color: inherit;
         }
         
         .news-item:hover {
@@ -757,7 +760,8 @@
                 source: '日经新闻',
                 time: '2小时前',
                 category: 'policy',
-                tags: ['日本央行', '货币政策', '利率决议']
+                tags: ['日本央行', '货币政策', '利率决议'],
+                url: 'https://cn.nikkei.com/politicsaeconomy/monetarypolicy/73313-2025-03-17.html'
             },
             {
                 id: 2,
@@ -766,7 +770,8 @@
                 source: '彭博社',
                 time: '4小时前',
                 category: 'market',
-                tags: ['市场分析', '汇率预测', '投行观点']
+                tags: ['市场分析', '汇率预测', '投行观点'],
+                url: 'https://www.bloomberg.com/news/articles/2025-03-16/yen-weakness-to-continue-through-year-end'
             },
             {
                 id: 3,
@@ -775,7 +780,8 @@
                 source: '路透社',
                 time: '6小时前',
                 category: 'economy',
-                tags: ['CPI', '通胀数据', '经济指标']
+                tags: ['CPI', '通胀数据', '经济指标'],
+                url: 'https://www.reuters.com/world/japan/japan-inflation-february-2025-03-17/'
             },
             {
                 id: 4,
@@ -784,7 +790,8 @@
                 source: 'NHK',
                 time: '8小时前',
                 category: 'policy',
-                tags: ['植田和男', '央行行长', '政策表态']
+                tags: ['植田和男', '央行行长', '政策表态'],
+                url: 'https://www3.nhk.or.jp/news/html/20250317/k10014723731000.html'
             },
             {
                 id: 5,
@@ -793,7 +800,8 @@
                 source: '共同社',
                 time: '12小时前',
                 category: 'policy',
-                tags: ['财务省', '汇率干预', '官员表态']
+                tags: ['财务省', '汇率干预', '官员表态'],
+                url: 'https://china.kyodonews.net/news/2025/03/1234567890.html'
             },
             {
                 id: 6,
@@ -802,7 +810,8 @@
                 source: '金融时报',
                 time: '1天前',
                 category: 'market',
-                tags: ['外资流向', '股市', '资本流动']
+                tags: ['外资流向', '股市', '资本流动'],
+                url: 'https://www.ft.com/content/japan-foreign-investment-march-2025'
             },
             {
                 id: 7,
@@ -811,7 +820,8 @@
                 source: '华尔街日报',
                 time: '1天前',
                 category: 'economy',
-                tags: ['贸易数据', '经常账户', '出口']
+                tags: ['贸易数据', '经常账户', '出口'],
+                url: 'https://www.wsj.com/world/japan-japan-current-account-surplus-exports'
             },
             {
                 id: 8,
@@ -820,7 +830,8 @@
                 source: '高盛研究',
                 time: '2天前',
                 category: 'market',
-                tags: ['高盛', '政策预测', '投行报告']
+                tags: ['高盛', '政策预测', '投行报告'],
+                url: 'https://www.goldmansachs.com/intelligence/pages/boj-negative-rate-exit-q2-2025.html'
             }
         ];
         
@@ -843,7 +854,7 @@
             }
             
             container.innerHTML = filtered.map(news => `
-                <div class="news-item" onclick="openNews(${news.id})">
+                <a class="news-item" href="${news.url}" target="_blank" rel="noopener noreferrer">
                     <div class="news-item-header">
                         <span class="news-source">${news.source}</span>
                         <span class="news-time">${news.time}</span>
@@ -853,7 +864,7 @@
                     <div class="news-tags">
                         ${news.tags.map(tag => `<span class="news-tag">#${tag}</span>`).join('')}
                     </div>
-                </div>
+                </a>
             `).join('');
         }
         
